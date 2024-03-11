@@ -4,6 +4,7 @@ import DTOs.Countries;
 import Exceptions.DaoExceptions;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class MySqlDao {
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -31,7 +32,29 @@ public class MySqlDao {
     }
     //feature 1
     //Main author: Daniel Ferrer
-    public 
+    public ArrayList<Countries> getAllCountries() throws SQLException {
+        ArrayList<Countries> countries = new ArrayList<>();
+
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM Countries")) {
+
+            try (ResultSet resultSet = statement.executeQuery()) {
+                while (resultSet.next()) {
+                    Countries country = new Countries(
+                            resultSet.getInt("ID"),
+                            resultSet.getString("Name"),
+                            resultSet.getString("Capital"),
+                            resultSet.getInt("Population"),
+                            resultSet.getString("Religion"),
+                            resultSet.getDouble("Area")
+                    );
+                    countries.add(country);
+                }
+            }
+        }
+
+        return countries;
+    }
 
     //feature 2
     //Main author: Marketa Bila
@@ -57,6 +80,23 @@ public class MySqlDao {
         }
 
         return country;
+    }
+    // Feature 3
+// Main author: Daniel Ferrer
+    public void deleteCountryById(int id) throws SQLException {
+        try (Connection connection = getConnection();
+             PreparedStatement statement = connection.prepareStatement("DELETE FROM countries WHERE id = ?")) {
+
+            statement.setInt(1, id); // Set the value of the parameter in the prepared statement
+
+            int affectedRows = statement.executeUpdate();
+
+            if (affectedRows == 0) {
+                System.out.println("No country found with the given ID, no rows affected.");
+            } else {
+                System.out.println("Country deleted successfully.");
+            }
+        }
     }
 
     //feature 4
