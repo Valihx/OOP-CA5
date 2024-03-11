@@ -1,7 +1,8 @@
 
 import java.sql.*;
+import java.util.Scanner;
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         Main app = new Main();
         app.start();
         app.runMenu();
@@ -12,7 +13,9 @@ public class Main {
         String dbName = "DTOs.Countries";
         String userName = "root";
         String password = "";
-        
+        CountryDAO countryDao = new CountryDAO();
+
+
         try( Connection conn = DriverManager.getConnection(url + dbName, userName, password) )
         {
             System.out.println("\nConnected to the database.");
@@ -37,8 +40,8 @@ public class Main {
                 System.out.println("4. Feature 4");
                 System.out.println("5. Exit");
                 System.out.print("Enter your choice: ");
-    
-                userChoice = scanner.nextLine();
+
+                String userChoice = scanner.nextLine();
     
                 switch (userChoice) {
                     case "1":
