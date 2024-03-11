@@ -50,7 +50,7 @@ public class MySqlDao {
                             resultSet.getString("Capital"),
                             resultSet.getInt("Population"),
                             resultSet.getString("Religion"),
-                            resultSet.getDouble("Area")
+                            resultSet.getDouble("Area ")
                     );
                 }
             }
