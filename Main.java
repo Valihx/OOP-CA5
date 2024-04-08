@@ -66,8 +66,15 @@ public class Main {
                     countryDao.deleteCountryById(ID);
                 } else if (userChoice == 4) {
                     //figure out the error
-                    countryDao.insertCountry();
-                } else if (userChoice == 5) {
+                    countryDao.insertCountry(new Countries());
+                } else if(userChoice == 5){
+                    System.out.println("Which country's population would you like to update? please enter the id");
+                    int id = scanner.nextInt();
+                    System.out.println("Whats the new population of this country?");
+                    double newPopulation = scanner.nextDouble();
+                    countryDao.updatePopulation(id,newPopulation);
+                    System.out.println("Changes were made.");
+                } else if (userChoice == 6) {
                     System.out.println("Exiting the program.");
                     break;  //exits the loop and ends the program
                 } else {

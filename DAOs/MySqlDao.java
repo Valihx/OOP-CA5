@@ -193,7 +193,7 @@ public class MySqlDao {
                 if (generatedKeys.next()) {
                     country.setId(generatedKeys.getInt(1));
 
-                //if no id obtained it throws a dao exception with a message
+                    //if no id obtained it throws a dao exception with a message
                 } else {
                     throw new DaoExceptions("Failed to insert country, no ID obtained.");
                 }
@@ -203,9 +203,14 @@ public class MySqlDao {
         } catch (SQLException e) {
             throw new DaoExceptions("Failed to insert country", e);
         }
-        //feature 5
-        //Main Author: Daniel Ferrer
-        public void updateCountry
+    }
+    //feature 5
+    //Main Author: Daniel Ferrer
+    //the output should just let the user know the changes were made
+    //this feature changes the population of the selected country
+    public void updatePopulation(int id, double newPopulation){
+
     }
 }
+
 
