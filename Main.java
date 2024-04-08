@@ -54,48 +54,23 @@ public class Main {
                 //it will call a method to retrieve information based on user's choice
                 if (userChoice == 1) {
                     countryDao.getAllCountries();
-                }
-                else if (userChoice == 2) {
+                } else if (userChoice == 2) {
                     System.out.print("Enter the ID of the country to get: ");
                     int id = scanner.nextInt();
                     scanner.nextLine(); // Consume newline left-over
                     countryDao.getCountryById(id);
-                }
-                else if (userChoice == 3) {
+                } else if (userChoice == 3) {
                     System.out.print("Enter the ID of the country to delete: ");
                     int ID = scanner.nextInt();
                     scanner.nextLine();
                     countryDao.deleteCountryById(ID);
-                }
-                else if (userChoice == 4) {
-                    System.out.print("Enter the ID of the country to add: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline left-over
-
-                    System.out.print("Enter the name of the country to add: ");
-                    String name = scanner.nextLine();
-
-                    System.out.print("Enter the capital of the country to add: ");
-                    String capital = scanner.nextLine();
-
-                    System.out.print("Enter the population of the country to add: ");
-                    int population = scanner.nextInt();
-                    scanner.nextLine();
-
-                    System.out.print("Enter the religion of the country to add: ");
-                    String religion = scanner.nextLine();
-
-                    System.out.print("Enter the area of the country to add: ");
-                    double area = scanner.nextDouble();
-
-                    Countries newCountry = new Countries(id, name, capital, population, religion, area);
-                    countryDao.insertCountry(newCountry);
-                }
-                else if (userChoice == 5) {
+                } else if (userChoice == 4) {
+                    //figure out the error
+                    countryDao.insertCountry();
+                } else if (userChoice == 5) {
                     System.out.println("Exiting the program.");
                     break;  //exits the loop and ends the program
-                }
-                else {
+                } else {
                     System.out.println("Invalid choice. Please enter a number between 1 and 5.");
                 }
             }

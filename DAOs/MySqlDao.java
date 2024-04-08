@@ -203,6 +203,9 @@ public class MySqlDao {
         } catch (SQLException e) {
             throw new DaoExceptions("Failed to insert country", e);
         }
+        //feature 5
+        //Main Author: Daniel Ferrer
+        public void updateCountry
     }
 }
 
